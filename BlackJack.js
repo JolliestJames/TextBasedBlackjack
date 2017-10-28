@@ -1,6 +1,6 @@
-function should_dealer_draw(hand, house, deck)
+function ShouldDealerDraw(Hand, House, Deck)
 {
-	if(hand.get_score() > house.get_score() && hand.is_busted() === false)
+	if(Hand.GetScore() > House.GetScore() && Hand.IsBusted() === false)
 	{
 		return true;
 	}
@@ -12,74 +12,75 @@ function should_dealer_draw(hand, house, deck)
 
 alert("Welcome to my Blackjack game!");
 	
-let newDeck = new Deck();
+let NewDeck = new Deck();
 
-let my_hand = new Hand();
+let MyHand = new Hand();
 
-let dealer_hand = new Hand();
+let DealerHand = new Hand();
 
-let playOn = true;
+let Play = true;
 
-while(playOn === true)
+while(Play)
 {
 	
 	alert("Dealing hands...");
 
-	my_card_1 = newDeck.draw_card();
-	my_card_2 = newDeck.draw_card();
+	MyCard1 = NewDeck.DrawCard();
+	MyCard2 = NewDeck.DrawCard();
 		
-	dealer_card_1 = newDeck.draw_card();
-	dealer_card_1.facedown = true;
-	dealer_card_2 = newDeck.draw_card();
+	DealerCard1 = NewDeck.DrawCard();
+	DealerCard1.facedown = true;
+	DealerCard2 = NewDeck.DrawCard();
 		
-	my_hand.add_card(my_card_1); 
-	my_hand.add_card(my_card_2);
+	MyHand.AddCard(MyCard1); 
+	MyHand.AddCard(MyCard2);
 
-	dealer_hand.add_card(dealer_card_1);
-	dealer_hand.add_card(dealer_card_2);
+	DealerHand.AddCard(DealerCard1);
+	DealerHand.AddCard(DealerCard2);
 	
-	if(my_hand.is_busted())
+	if(MyHand.IsBusted())
 	{
-		my_hand.has_ace();
+		MyHand.HasAce();
 	}
 	
-	if(dealer_hand.is_busted())
+	if(DealerHand.IsBusted())
 	{
-		dealer_hand.has_ace();
+		DealerHand.HasAce();
 	}
 	
-	if(my_hand.check_21() === true && dealer_hand.check_21() === true)
+	if(MyHand.CheckFor21() === true && DealerHand.CheckFor21() === true)
 	{
-		dealer_hand.cards[0].facedown = false;
-		alert("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-			"\nDealer's hand: " + dealer_hand.return_hand() + "Score: " + dealer_hand.get_score() +
+		DealerHand.Cards[0].Facedown = false;
+		alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+			"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 			"\nIt's a draw!");
 	}
-	else if(my_hand.check_21() === true)
+	
+	else if(MyHand.CheckFor21() === true)
 	{
-		dealer_hand.cards[0].facedown = false;
-		alert("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-			"\nDealer's hand: " + dealer_hand.return_hand() + "Score: " + dealer_hand.get_score() +
+		DealerHand.Cards[0].facedown = false;
+		alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+			"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 			"\nBlackjack! You win!");
 	}
-	else if(dealer_hand.check_21() === true)
+	else if(DealerHand.CheckFor21() === true)
 	{
-		dealer_hand.cards[0].facedown = false;
-		alert("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-			"\nDealer's hand: " + dealer_hand.return_hand() + "Score: " + dealer_hand.get_score() +
+		DealerHand.Cards[0].facedown = false;
+		alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+			"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 			"\nBlackjack! The house wins!");
 	}
 	else
 	{
 		
-		let move = prompt("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-			"\nDealer's hand: " + dealer_hand.return_hand() + "Score: ?" +
+		let move = prompt("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+			"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: ?" +
 			"\nWould you like to [hit] or [stand]?");
 		
 		while(move.toUpperCase() !== "HIT" && move.toUpperCase() !== "STAND")
 		{
-			move = prompt("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-				"\nDealer's hand: " + dealer_hand.return_hand() + "Score: ?" +
+			move = prompt("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+				"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: ?" +
 				"\n[HIT] OR [STAND]");
 		}
 		
@@ -88,102 +89,102 @@ while(playOn === true)
 				
 			alert("Dealing...");
 			
-			my_hand.add_card(newDeck.draw_card());
+			MyHand.AddCard(NewDeck.DrawCard());
 			
-			if(my_hand.is_busted())
+			if(MyHand.IsBusted())
 			{
-				if(!my_hand.has_ace())
+				if(!MyHand.HasAce())
 				{
-					alert("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
+					alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
 						"\nYou busted!");
 					
 					move = "STAND";
 				}
 				else
 				{
-					my_hand.has_ace();
+					MyHand.HasAce();
 				}
 			}
 			
-			if(!my_hand.is_busted())
+			if(!MyHand.IsBusted())
 			{		
-				move = prompt("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-					"\nDealer's hand: " + dealer_hand.return_hand() + "Score: ?" +
+				move = prompt("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+					"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: ?" +
 					"\nWould you like to [hit] or [stand]?");
 			}
 			
 			while(move.toUpperCase() !== "HIT" && move.toUpperCase() !== "STAND")
 			{
-				move = prompt("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-					"\nDealer's hand: " + dealer_hand.return_hand() + "Score: ?" +
+				move = prompt("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+					"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: ?" +
 					"\n[HIT] OR [STAND]");
 			}
 		}
 		
-		while(should_dealer_draw(my_hand, dealer_hand, newDeck) === true)
+		while(ShouldDealerDraw(MyHand, DealerHand, NewDeck) === true)
 		{
 			alert("Dealing...");
 					
-			dealer_hand.add_card(newDeck.draw_card());
+			DealerHand.AddCard(NewDeck.DrawCard());
 			
-			alert("Dealer's hand: " + dealer_hand.return_hand() + "Score: ?");
+			alert("Dealer's hand: " + DealerHand.ReturnHand() + "Score: ?");
 			
-			if(dealer_hand.is_busted())
+			if(DealerHand.IsBusted())
 			{
-				if(!dealer_hand.has_ace())
+				if(!DealerHand.HasAce())
 				{
-					dealer_hand.cards[0].facedown = false;
+					DealerHand.Cards[0].facedown = false;
 					alert("Dealer busted!");
 					break;
 				}
 				else
 				{
-					dealer_hand.has_ace();
+					DealerHand.HasAce();
 				}
 			}
 		}
 		
-		if(my_hand.get_score() < dealer_hand.get_score() && dealer_hand.is_busted() === false || my_hand.is_busted() === true)
+		if(MyHand.GetScore() < DealerHand.GetScore() && MyHand.IsBusted() === false || MyHand.IsBusted() === true)
 		{
-			dealer_hand.cards[0].facedown = false;
-			alert("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-				"\nDealer's hand: " + dealer_hand.return_hand() + "Score: " + dealer_hand.get_score() +
+			DealerHand.Cards[0].facedown = false;
+			alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+				"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 				"\nThe house wins!");
 		}
-		else if(my_hand.get_score() > dealer_hand.get_score() && my_hand.is_busted() === false || dealer_hand.is_busted() === true)
+		else if(MyHand.GetScore() > DealerHand.GetScore() && MyHand.IsBusted() === false || DealerHand.IsBusted() === true)
 		{
-			dealer_hand.cards[0].facedown = false;
-			alert("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-				"\nDealer's hand: " + dealer_hand.return_hand() + "Score: " + dealer_hand.get_score() +
+			DealerHand.Cards[0].facedown = false;
+			alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+				"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 				"\nYou win!");
 		}
 		else
 		{
-			dealer_hand.cards[0].facedown = false;
-			alert("Your hand: " + my_hand.return_hand() + "Score: " + my_hand.get_score() +
-				"\nDealer's hand: " + dealer_hand.return_hand() + "Score: " + dealer_hand.get_score() +
+			DealerHand.Cards[0].facedown = false;
+			alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
+				"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 				"\nIt's a draw!");
 		}
 	}
 	
-	move = prompt("Would you like to play again?\nEnter [yes] or [no]")
+	Move = prompt("Would you like to play again?\nEnter [yes] or [no]")
 	
-	while(move.toUpperCase() !== "YES" && move.toUpperCase() !== "NO")
+	while(Move.toUpperCase() !== "YES" && Move.toUpperCase() !== "NO")
 	{
-		move = prompt("[YES] OR [NO]");
+		Move = prompt("[YES] OR [NO]");
 	}
 	
-	if(move.toUpperCase() === "YES")
+	if(Move.toUpperCase() === "YES")
 	{
-		delete newDeck;
-		newDeck = new Deck();
-		my_hand.clear_hand();
-		dealer_hand.clear_hand();
+		delete NewDeck;
+		NewDeck = new Deck();
+		MyHand.ClearHand();
+		DealerHand.ClearHand();
 	}	
 	else
 	{
 		alert("Thanks for playing!");
-		playOn = false;
+		Play = false;
 	}
 }
 

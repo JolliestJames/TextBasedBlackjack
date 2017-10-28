@@ -1,47 +1,47 @@
 function Hand()
 {
-	this.cards = [];
+	this.Cards = [];
 }	
 
-Hand.prototype.add_card = function(card)
+Hand.prototype.AddCard = function(Card)
 {
-	this.cards.push(card);
+	this.Cards.push(Card);
 }
 
-Hand.prototype.return_hand = function()
+Hand.prototype.ReturnHand = function()
 {
-	let hand = "Cards: ";
+	let Hand = "Cards: ";
 	
-	for(card in this.cards)
+	for(Card in this.Cards)
 	{
-		if(this.cards[card].facedown === false)
+		if(this.Cards[Card].Facedown === false)
 		{
-			hand += "[" + this.cards[card].rank + " of " + this.cards[card].suite + "], ";
+			Hand += "[" + this.Cards[Card].Rank + " of " + this.Cards[Card].Suite + "], ";
 		}
 		else
 		{
-			hand += "[?], ";
+			Hand += "[?], ";
 		}
 	}
 	
-	return hand;
+	return Hand;
 }
 
-Hand.prototype.get_score = function()
+Hand.prototype.GetScore = function()
 {
-	let score = 0;
+	let Score = 0;
 	
-	for(card in this.cards)
+	for(Card in this.Cards)
 	{
-		score += this.cards[card].score;
+		Score += this.Cards[Card].Score;
 	}
 	
-	return score;
+	return Score;
 }
 
-Hand.prototype.is_busted = function()
+Hand.prototype.IsBusted = function()
 {
-	if(this.get_score() > 21)
+	if(this.GetScore() > 21)
 	{
 		return true;
 	}
@@ -51,14 +51,14 @@ Hand.prototype.is_busted = function()
 	}
 }
 
-Hand.prototype.clear_hand = function()
+Hand.prototype.ClearHand = function()
 {
-	this.cards = [];
+	this.Cards = [];
 }
 
-Hand.prototype.check_21 = function()
+Hand.prototype.CheckFor21 = function()
 {
-	if(this.get_score() === 21)
+	if(this.GetScore() === 21)
 	{
 		return true;
 	}
@@ -68,16 +68,17 @@ Hand.prototype.check_21 = function()
 	}
 }
 
-Hand.prototype.has_ace = function()
+Hand.prototype.HasAce = function()
 {
-	for(card in this.cards)
+	for(Card in this.Cards)
 	{
-		if(this.cards[card].score === 11)
+		if(this.Cards[Card].Score === 11)
 		{
-			this.cards[card].change_ace();
+			this.Cards[Card].ChangeAce();
 			return true;
 		}
 	}
+	
 	return false;
 }
 

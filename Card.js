@@ -1,7 +1,7 @@
-function Card(suite, rank)
+function Card(Suite, Rank)
 {
 	
-	const ranks = 
+	const Rank = 
 	{
 		1: "Ace",
 		2: "2",
@@ -18,43 +18,43 @@ function Card(suite, rank)
 		13: "King"
 	};
 	
-	this.suite = suite;
-	this.rank = ranks[rank];
+	this.Suite = Suite;
+	this.Rank = Ranks[Rank];
 	
-	let score = -1
+	let Score = -1
 	
-	if(rank === 1)
+	if(Rank === 1)
 	{
-		score = 11;
+		Score = 11;
 	}
-	else if(rank > 9)
+	else if(Rank > 9)
 	{
-		score = 10;
+		Score = 10;
 	}
 	else
 	{
-		score = rank
+		Score = Rank
 	}
 	
-	this.score = score;
+	this.Score = Score;
 	
-	this.facedown = false;
+	this.Facedown = false;
 	
 }
 
-Card.prototype.getInfo = function()
+Card.prototype.GetInfo = function()
 {
-	let info = [];
+	let Info = [];
 	
-	info.push(this.suite);
-	info.push(this.rank);
-	info.push(this.score);
+	Info.push(this.Suite);
+	Info.push(this.Rank);
+	Info.push(this.Score);
 	
-	return info;
+	return Info;
 }
 
-Card.prototype.change_ace = function()
+Card.prototype.ChangeAce = function()
 {
-	this.score = 1;
+	this.Score = 1;
 }
 

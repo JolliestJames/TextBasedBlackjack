@@ -1,68 +1,68 @@
 function Deck()
 {
 	
-	this.cards = [];
-	this.count = 0;
+	this.Cards = [];
+	this.Count = 0;
 	
 	for(let i = 1; i < 14; i++)
 	{
-		var card = new Card("Spades", i);
-		this.cards.push(card);
+		var Card = new Card("Spades", i);
+		this.Cards.push(Card);
 	}
 	
 	for(let i = 1; i < 14; i++)
 	{
-		let card = new Card("Diamonds", i);
-		this.cards.push(card);
+		let Card = new Card("Diamonds", i);
+		this.Cards.push(Card);
 	}
 	
 	for(let i = 1; i < 14; i++)
 	{
-		let card = new Card("Hearts", i);
-		this.cards.push(card);
+		let Card = new Card("Hearts", i);
+		this.Cards.push(Card);
 	}
 	
 	for(let i = 1; i < 14; i++)
 	{
-		let card = new Card("Clubs", i);
-		this.cards.push(card);
+		let Card = new Card("Clubs", i);
+		this.Cards.push(Card);
 	}
 	
-	this.shuffle();
+	this.Shuffle();
 }
 
-Deck.prototype.shuffle = function()
+Deck.prototype.Shuffle = function()
 {
 	
-	let i = 0, j = 0, temp = null;
+	let i = 0, j = 0, Temp = null;
 	
-	for(i = this.cards.length - 1; i > 0; i--)
+	for(i = this.Cards.length - 1; i > 0; i--)
 	{
 		j = Math.floor(Math.random()*(i+1));
-		temp = this.cards[i];
-		this.cards[i] = this.cards[j];
-		this.cards[j] = temp;
+		Temp = this.Cards[i];
+		this.Cards[i] = this.Cards[j];
+		this.Cards[j] = Temp;
 	}
 }
 
-Deck.prototype.draw_card = function()
+Deck.prototype.DrawCard = function()
 {
-	let card = this.cards[0];
-	this.card_count(card);
-	this.cards.splice(0,1);
-	return card;
+	let Card = this.Cards[0];
+	this.CardCount(Card);
+	this.Cards.splice(0,1);
+	return Card;
 }
 
-Deck.prototype.card_count = function(card)
+Deck.prototype.CardCount = function(Card)
 {
 	
-	if(card.rank >= 10)
+	if(Card.Rank >= 10)
 	{
-		this.count -= 1;
+		this.Count -= 1;
 	}
-	else if(card.rank < 7)
+	else if(Card.Rank < 7)
 	{
-		this.count += 1;
+		this.Count += 1;
 	}
 		
 }
