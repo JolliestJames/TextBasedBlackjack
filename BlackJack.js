@@ -29,7 +29,7 @@ while(Play)
 	MyCard2 = NewDeck.DrawCard();
 		
 	DealerCard1 = NewDeck.DrawCard();
-	DealerCard1.facedown = true;
+	DealerCard1.Facedown = true;
 	DealerCard2 = NewDeck.DrawCard();
 		
 	MyHand.AddCard(MyCard1); 
@@ -58,14 +58,14 @@ while(Play)
 	
 	else if(MyHand.CheckFor21() === true)
 	{
-		DealerHand.Cards[0].facedown = false;
+		DealerHand.Cards[0].Facedown = false;
 		alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
 			"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 			"\nBlackjack! You win!");
 	}
 	else if(DealerHand.CheckFor21() === true)
 	{
-		DealerHand.Cards[0].facedown = false;
+		DealerHand.Cards[0].Facedown = false;
 		alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
 			"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 			"\nBlackjack! The house wins!");
@@ -133,7 +133,7 @@ while(Play)
 			{
 				if(!DealerHand.HasAce())
 				{
-					DealerHand.Cards[0].facedown = false;
+					DealerHand.Cards[0].Facedown = false;
 					alert("Dealer busted!");
 					break;
 				}
@@ -146,21 +146,21 @@ while(Play)
 		
 		if(MyHand.GetScore() < DealerHand.GetScore() && MyHand.IsBusted() === false || MyHand.IsBusted() === true)
 		{
-			DealerHand.Cards[0].facedown = false;
+			DealerHand.Cards[0].Facedown = false;
 			alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
 				"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 				"\nThe house wins!");
 		}
 		else if(MyHand.GetScore() > DealerHand.GetScore() && MyHand.IsBusted() === false || DealerHand.IsBusted() === true)
 		{
-			DealerHand.Cards[0].facedown = false;
+			DealerHand.Cards[0].Facedown = false;
 			alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
 				"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 				"\nYou win!");
 		}
 		else
 		{
-			DealerHand.Cards[0].facedown = false;
+			DealerHand.Cards[0].Facedown = false;
 			alert("Your hand: " + MyHand.ReturnHand() + "Score: " + MyHand.GetScore() +
 				"\nDealer's hand: " + DealerHand.ReturnHand() + "Score: " + DealerHand.GetScore() +
 				"\nIt's a draw!");
