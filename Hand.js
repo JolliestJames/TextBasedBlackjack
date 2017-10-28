@@ -3,6 +3,14 @@ function Hand()
 	this.Cards = [];
 }	
 
+Hand.prototype.DeleteCards = function()
+{
+	for(Index in this.Cards)
+	{
+		delete this.Cards[Index];
+	}
+}
+
 Hand.prototype.AddCard = function(Card)
 {
 	this.Cards.push(Card);
@@ -12,11 +20,11 @@ Hand.prototype.ReturnHand = function()
 {
 	let Hand = "Cards: ";
 	
-	for(Card in this.Cards)
+	for(Index in this.Cards)
 	{
-		if(this.Cards[Card].Facedown === false)
+		if(this.Cards[Index].Facedown === false)
 		{
-			Hand += "[" + this.Cards[Card].Rank + " of " + this.Cards[Card].Suite + "], ";
+			Hand += "[" + this.Cards[Index].Rank + " of " + this.Cards[Index].Suite + "], ";
 		}
 		else
 		{
@@ -31,9 +39,9 @@ Hand.prototype.GetScore = function()
 {
 	let Score = 0;
 	
-	for(Card in this.Cards)
+	for(Index in this.Cards)
 	{
-		Score += this.Cards[Card].Score;
+		Score += this.Cards[Index].Score;
 	}
 	
 	return Score;
@@ -70,15 +78,14 @@ Hand.prototype.CheckFor21 = function()
 
 Hand.prototype.HasAce = function()
 {
-	for(Card in this.Cards)
+	for(Index in this.Cards)
 	{
-		if(this.Cards[Card].Score === 11)
+		if(this.Cards[Index].Score === 11)
 		{
-			this.Cards[Card].ChangeAce();
+			this.Cards[Index].ChangeAce();
 			return true;
 		}
 	}
-	
 	return false;
 }
 

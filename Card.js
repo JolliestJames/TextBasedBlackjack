@@ -1,7 +1,6 @@
-function Card(Suite, Rank)
+function Card(Suite, RankNumber)
 {
-	
-	const Rank = 
+	const Ranks = 
 	{
 		1: "Ace",
 		2: "2",
@@ -19,27 +18,24 @@ function Card(Suite, Rank)
 	};
 	
 	this.Suite = Suite;
-	this.Rank = Ranks[Rank];
-	
+	this.Rank = Ranks[RankNumber];
 	let Score = -1
 	
-	if(Rank === 1)
+	if(RankNumber === 1)
 	{
 		Score = 11;
 	}
-	else if(Rank > 9)
+	else if(RankNumber > 9)
 	{
 		Score = 10;
 	}
 	else
 	{
-		Score = Rank
+		Score = RankNumber
 	}
 	
 	this.Score = Score;
-	
-	this.Facedown = false;
-	
+	this.Facedown = false;	
 }
 
 Card.prototype.GetInfo = function()
@@ -57,4 +53,3 @@ Card.prototype.ChangeAce = function()
 {
 	this.Score = 1;
 }
-

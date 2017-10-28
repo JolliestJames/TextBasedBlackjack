@@ -176,10 +176,11 @@ while(Play)
 	
 	if(Move.toUpperCase() === "YES")
 	{
-		delete NewDeck;
-		NewDeck = new Deck();
 		MyHand.ClearHand();
 		DealerHand.ClearHand();
+		NewDeck.DeleteCards();
+		delete NewDeck;
+		NewDeck = new Deck();
 	}	
 	else
 	{
